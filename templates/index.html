@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div>
+<h1>Welcome to Web Marketplace!</h1>
+
+<table>
+  <tr>
+    <th>For sale</th>
+  </tr>
+{% for item in productList %}
+  <tr>
+    <td>{{item.name}}</td>
+    <td>{{item.price}} €</td>
+  </tr>
+{% endfor %}
+</table>
+
+<p>More features coming soon</p>
+</div>
+{% endblock %}
