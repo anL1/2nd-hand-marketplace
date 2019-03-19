@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<form method="post" action="{{url_for('product_ad_create')}}" >
+  <input type="text" name="name" />
+  <input type="number" name="price" />
+  <input type="submit" value="Luo ilmoitus" />
+</form>
+{% endblock %}
