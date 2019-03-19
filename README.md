@@ -16,5 +16,7 @@ kommentteja / kysymyksiä tuotteesta. Käyttäjän täytyy rekisteröityä järj
 ### Dokumentaatio
 [Tietokantakaavio](https://github.com/anL1/2nd-hand-marketplace/blob/master/documentation/tietokantakaavio.md)
 
+[User Storyt](https://github.com/anL1/2nd-hand-marketplace/blob/master/documentation/user-stories.md)
+
 ### Heroku
 https://web-market.herokuapp.com/
