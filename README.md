@@ -12,3 +12,6 @@ kommentteja / kysymyksiä tuotteesta. Käyttäjän täytyy rekisteröityä järj
 * Ilmoituksen kommentointi. Kommentin muokkaaminen ja poistaminen
 * Kategorian lisääminen
 * Ilmoitusten tarkastelu kategorian, iän, nimen mukaan
+
+### Heroku
+https://web-market.herokuapp.com/
