@@ -13,5 +13,8 @@ kommentteja / kysymyksiä tuotteesta. Käyttäjän täytyy rekisteröityä järj
 * Kategorian lisääminen
 * Ilmoitusten tarkastelu kategorian, iän, nimen mukaan
 
+### Dokumentaatio
+[Tietokantakaavio](https://github.com/anL1/2nd-hand-marketplace/blob/master/documentation/tietokantakaavio.md)
+
 ### Heroku
 https://web-market.herokuapp.com/
