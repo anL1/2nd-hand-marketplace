@@ -5,14 +5,6 @@ Työn aiheena on verkossa toimiva kirpputorialusta, jossa käyttäjät voivat my
 kierrätettyjä tuotteita. Ilmoituksia voi selata erillisessä näkymässä ja ilmoitukseen voi jättää
 kommentteja / kysymyksiä tuotteesta. Käyttäjän täytyy rekisteröityä järjestelmään kommentoidakseen ja jättääkseen ilmoituksia. Ilmoitukseen liitetään kategoria (tarvittaessa useampi) ja ilmoituksia voi selata järjestelmässä kategorioittain. Lisäksi selaamiseen voi toteuttaa erilaisia hakutoimintoja nimen, ilmoituksen iän jne. perusteella.
 
-## Toimintoja
-* Kirjautuminen
-* Ilmoituksen lisääminen, muokkaaminen ja poistaminen
-* Ilmoitusten selailu
-* Ilmoituksen kommentointi. Kommentin muokkaaminen ja poistaminen
-* Kategorian lisääminen
-* Ilmoitusten tarkastelu kategorian, iän, nimen mukaan
-
 ### Dokumentaatio
 [Tietokantakaavio](https://github.com/anL1/2nd-hand-marketplace/blob/master/documentation/tietokantakaavio.md)
 
