@@ -13,6 +13,7 @@
   <tr>
     <td>{{item.name}}</td>
     <td>{{item.price}} €</td>
+    <td><a href="{{url_for('product_ad_page', product_id=item.id) }}">Muokkaa ilmoitusta</a></td>
   </tr>
 {% endfor %}
 </table>

@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<h1>Muokkaa ilmoitustasi</h1>
+<h2>{{ product.name }}</h2>
+<p>Hinta: {{product.price}}</p>
+
+<form method="post" action="{{url_for('product_ad_modify', product_id=product.id)}}" >
+  <input type="text" name="name" />
+  <input type="number" name="price" />
+  <input type="submit" value="Tallenna muokkaukset" />
+</form>
+{% endblock %}

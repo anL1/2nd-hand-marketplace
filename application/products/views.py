@@ -18,3 +18,17 @@ def product_ad_create():
     db.session().commit()
 
     return redirect(url_for("products_index"))
+
+@app.route("/products/<product_id>/", methods=["GET"])
+def product_ad_page(product_id):
+    return render_template("products/product_ad.html", product = Product.query.get(product_id))
+
+@app.route("/products/<product_id>/", methods=["POST"])
+def product_ad_modify(product_id):
+    product = Product.query.get(product_id)
+    product.name = request.form.get("name")
+    product.price = request.form.get("price")
+
+    db.session().commit()
+
+    return redirect(url_for("products_index"))
