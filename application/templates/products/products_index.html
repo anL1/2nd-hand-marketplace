@@ -11,7 +11,7 @@
   </tr>
 {% for item in productList %}
   <tr>
-    <td>{{item.name}}</td>
+    <td><a href="{{url_for('single_product_page', product_id=item.id) }}">{{item.name}}</a></td>
     <td>{{item.price}} €</td>
     <td><a href="{{url_for('product_ad_page', product_id=item.id) }}">Muokkaa ilmoitusta</a></td>
   </tr>

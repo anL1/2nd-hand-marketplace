@@ -1,0 +1,7 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<h2>{{ product.name }}</h2>
+<p>Hinta: {{product.price}}</p>
+<p>Ilmoituksen jättänyt käyttäjä {{user.username}} </p>
+{% endblock %}

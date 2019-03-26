@@ -4,6 +4,7 @@ from flask_login import login_required, current_user
 
 from application.products.models import Product
 from application.products.forms import ProductForm
+from application.auth.models import User
 
 @app.route("/products/new/")
 @login_required
@@ -27,6 +28,12 @@ def product_ad_create():
     db.session().commit()
 
     return redirect(url_for("products_index"))
+
+@app.route("/products/<product_id>/", methods=["GET"])
+def single_product_page(product_id):
+    p = Product.query.get(product_id)
+    user = User.query.get(p.account_id)
+    return render_template("products/product_page.html", product = p, user = user)
 
 @app.route("/products/<product_id>/edit/", methods=["GET"])
 def product_ad_page(product_id):
