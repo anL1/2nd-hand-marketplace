@@ -5,6 +5,8 @@ from application import app
 from application.auth.models import User
 from application.auth.forms import LoginForm
 
+from application.products.models import Product
+
 @app.route("/auth/login/", methods=["GET", "POST"])
 def auth_login():
     if request.method == "GET":
@@ -27,3 +29,8 @@ def auth_login():
 def auth_logout():
     logout_user()
     return redirect(url_for("products_index"))
+
+@app.route("/auth/<user_id>/")
+def auth_user_page(user_id):
+    productList = Product.query.filter_by(account_id = user_id)
+    return render_template("auth/user_page.html", user = User.query.get(user_id), list = productList)

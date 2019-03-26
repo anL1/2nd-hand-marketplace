@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<h2>Käyttäjän {{ user.username }} sivu</h2>
+<p>Nimi: {{user.name}}</p>
+<table>
+  <tr>
+    <th>Ilmoitukset</th>
+  </tr>
+  {% for item in list %}
+  <tr>
+    <td><a href="{{url_for('single_product_page', product_id=item.id)}}">{{item.name}}</a></td>
+  </tr>
+  {% endfor %}
+</table
+{% endblock %}

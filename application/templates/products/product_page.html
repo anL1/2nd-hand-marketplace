@@ -3,5 +3,7 @@
 {% block body %}
 <h2>{{ product.name }}</h2>
 <p>Hinta: {{product.price}}</p>
-<p>Ilmoituksen jättänyt käyttäjä {{user.username}} </p>
+<p>Ilmoituksen jättänyt käyttäjä
+<a href="{{url_for('auth_user_page', user_id=user.id)}}">{{user.username}}</a>
+</p>
 {% endblock %}
