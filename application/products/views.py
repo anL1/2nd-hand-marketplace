@@ -22,6 +22,7 @@ def product_ad_create():
         return render_template("products/new_ad.html", form = form)
 
     p = Product(form.name.data, form.price.data)
+    p.account_id = current_user.id 
     db.session().add(p)
     db.session().commit()
 
