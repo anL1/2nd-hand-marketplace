@@ -1,9 +1,12 @@
 from application import app, db
 from flask import render_template, request, redirect, url_for
+from flask_login import login_required
+
 from application.products.models import Product
 from application.products.forms import ProductForm
 
 @app.route("/products/new/")
+@login_required
 def new_ad_form():
     return render_template("products/new_ad.html", form = ProductForm())
 
@@ -12,6 +15,7 @@ def products_index():
     return render_template("products/products_index.html", productList = Product.query.all())
 
 @app.route("/products/", methods=["POST"])
+@login_required
 def product_ad_create():
     form = ProductForm(request.form)
     if not form.validate():

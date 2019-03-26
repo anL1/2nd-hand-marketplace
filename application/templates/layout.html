@@ -6,8 +6,16 @@
     </head>
 
     <body>
+      {% if current_user.is_authenticated %}
+      <p>
+        Kirjautunut nimellä {{current_user.name}}
+      </p>
+      <a href="{{url_for('auth_logout')}}">Kirjaudu ulos</a>
+      {% else %}
+      <a href="{{url_for('auth_login')}}">Kirjaudu sisään</a>
+      {% endif %}
+
       <ul>
-        <li><a href="{{url_for('auth_login')}}">Kirjaudu sisään</a></li>
         <li><a href="{{url_for('products_index')}}">Ilmoitukset</a></li>
         <li><a href="{{url_for('new_ad_form')}}">Lisää uusi ilmoitus</a></li>
       </ul>
