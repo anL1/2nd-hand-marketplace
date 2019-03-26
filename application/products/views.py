@@ -1,10 +1,11 @@
 from application import app, db
 from flask import render_template, request, redirect, url_for
 from application.products.models import Product
+from application.products.forms import ProductForm
 
 @app.route("/products/new/")
 def new_ad_form():
-    return render_template("products/new_ad.html")
+    return render_template("products/new_ad.html", form = ProductForm())
 
 @app.route("/products/", methods=["GET"])
 def products_index():
@@ -12,8 +13,11 @@ def products_index():
 
 @app.route("/products/", methods=["POST"])
 def product_ad_create():
-    p = Product(request.form.get("name"), request.form.get("price"))
+    form = ProductForm(request.form)
+    if not form.validate():
+        return render_template("products/new_ad.html", form = form)
 
+    p = Product(form.name.data, form.price.data)
     db.session().add(p)
     db.session().commit()
 
@@ -21,13 +25,17 @@ def product_ad_create():
 
 @app.route("/products/<product_id>/", methods=["GET"])
 def product_ad_page(product_id):
-    return render_template("products/product_ad.html", product = Product.query.get(product_id))
+    return render_template("products/product_ad.html", product = Product.query.get(product_id), form = ProductForm())
 
 @app.route("/products/<product_id>/", methods=["POST"])
 def product_ad_modify(product_id):
     product = Product.query.get(product_id)
-    product.name = request.form.get("name")
-    product.price = request.form.get("price")
+    form = ProductForm(request.form)
+    if not form.validate():
+        return render_template("products/product_ad.html", product = Product.query.get(product_id), form = form)
+
+    product.name = form.name.data
+    product.price = form.price.data
 
     db.session().commit()
 
