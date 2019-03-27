@@ -12,7 +12,10 @@
       </p>
       <a href="{{url_for('auth_logout')}}">Kirjaudu ulos</a>
       {% else %}
-      <a href="{{url_for('auth_login')}}">Kirjaudu sisään</a>
+      <ul>
+        <li><a href="{{url_for('auth_login')}}">Kirjaudu sisään</a></li>
+        <li><a href="{{url_for('auth_create_new')}}">Rekisteröidy</a></li>
+      </ul>
       {% endif %}
 
       <ul>

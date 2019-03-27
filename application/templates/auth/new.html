@@ -1,10 +1,24 @@
 {% extends "layout.html" %}
 
 {% block body %}
-<h1>Kirjaudu sisään</h1>
-{{ error }}
-<form method="POST" action="{{ url_for('auth_login') }}">
+<h1>Rekisteröidy</h1>
+<form method="POST" action="{{ url_for('auth_create_new') }}">
   <table>
+    <tr>
+      <td>
+        {{ form.name.label }}
+      </td>
+      <td>
+        {{ form.name }}
+      </td>
+      <td>
+	       <ul>
+	         {% for error in form.name.errors %}
+	         <li>{{ error }}</li>
+	         {% endfor %}
+	        </ul>
+	     </td>
+    </tr>
     <tr>
       <td>
 	{{ form.username.label }}
@@ -37,7 +51,7 @@
     </tr>
     <tr>
       <td colspan="2">
-	<input type="submit" value="Kirjaudu sisään"/>
+	<input type="submit" value="Luo käyttäjä"/>
       </td>
     </tr>
 </form>
