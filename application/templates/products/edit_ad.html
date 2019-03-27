@@ -5,6 +5,9 @@
 <h2>{{ product.name }}</h2>
 <p>Hinta: {{product.price}}</p>
 
+<form method="post" action="{{url_for('delete_product_ad', product_id=product.id)}}">
+  <input type="submit" value="Poista ilmoitus"/>
+</form>
 <form method="post" action="{{url_for('product_ad_modify', product_id=product.id)}}" >
   <table>
     <tr>

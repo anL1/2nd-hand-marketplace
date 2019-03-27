@@ -52,3 +52,12 @@ def product_ad_modify(product_id):
     db.session().commit()
 
     return redirect(url_for("products_index"))
+
+@app.route("/products/<product_id>/edit/delete/", methods=["POST"])
+@login_required
+def delete_product_ad(product_id):
+    p = Product.query.get(product_id)
+    db.session().delete(p)
+    db.session().commit()
+
+    return redirect(url_for("products_index"))
