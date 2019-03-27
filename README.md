@@ -12,3 +12,9 @@ kommentteja / kysymyksiä tuotteesta. Käyttäjän täytyy rekisteröityä järj
 
 ### Heroku
 https://web-market.herokuapp.com/
+
+### Testitunnukset herokuun
+'''
+KT: test-user
+SS: foo123
+'''
