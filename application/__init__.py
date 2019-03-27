@@ -2,11 +2,14 @@
 from flask import Flask
 app = Flask(__name__)
 
-#import sqlalchemy
 from flask_sqlalchemy import SQLAlchemy
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///market.db"
-#print sql-querys to console
-app.config["SQLALCHEMY_ECHO"] = True
+import os
+
+if os.environ.get("HEROKU"):
+    app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
+else:
+    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///market.db"
+    app.config["SQLALCHEMY_ECHO"] = True
 
 #creating database
 db = SQLAlchemy(app)
@@ -35,4 +38,7 @@ def load_user(user_id):
     return User.query.get(user_id)
 
 #initialize database
-db.create_all()
+try:
+    db.create_all()
+except:
+    pass
