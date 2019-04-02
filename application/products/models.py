@@ -1,10 +1,7 @@
 from application import db
+from application.models import Base
 
-class Product(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    date_created = db.Column(db.DateTime, default=db.func.current_timestamp())
-    date_modified = db.Column(db.DateTime, default=db.func.current_timestamp(),
-    onupdate=db.func.current_timestamp())
+class Product(Base):
 
     name = db.Column(db.String(200), nullable=False)
     price = db.Column(db.Integer, nullable=False)
