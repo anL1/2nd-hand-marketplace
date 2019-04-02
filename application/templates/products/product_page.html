@@ -6,4 +6,26 @@
 <p>Ilmoituksen jättänyt käyttäjä
 <a href="{{url_for('auth_user_page', user_id=user.id)}}">{{user.username}}</a>
 </p>
+<table>
+  <tr>
+    <th>Kommentit</th>
+  </tr>
+{% for c in comments %}
+    <tr>
+      <td>{{c.content}}</td>
+      <td>{{c.account_id}}</td>
+    </tr>
+{% endfor %}
+</table>
+<form method="post" action="{{url_for('add_comment', product_id = product.id)}}">
+<table>
+  <tr>
+    <td>{{form.content.label}}</td>
+    <td>{{form.content}}</td>
+    <td colspan="2">
+      <input type="submit" value="Lisää kommentti" />
+    </td>
+  </tr>
+</table>
+</form>
 {% endblock %}
