@@ -14,6 +14,13 @@
     <tr>
       <td>{{c.username}}</td>
       <td>{{c.content}}</td>
+      {% if current_user.id == c.user_id %}
+      <td>
+        <form method="post" action="{{url_for('delete_comment', comment_id = c.comment_id, product_id = product.id)}}">
+          <input type="submit" value="Poista kommentti" />
+        </form>
+      </td>
+      {% endif %}
     </tr>
 {% endfor %}
 </table>

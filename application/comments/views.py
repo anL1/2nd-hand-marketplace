@@ -20,3 +20,12 @@ def add_comment(product_id):
     db.session.commit()
 
     return redirect(url_for("single_product_page", product_id = product_id))
+
+@app.route("/<product_id>/comments/<comment_id>/delete/", methods=["POST"])
+@login_required
+def delete_comment(comment_id, product_id):
+    c = Comment.query.get(comment_id)
+    db.session().delete(c)
+    db.session().commit()
+
+    return redirect(url_for("single_product_page", product_id = product_id))

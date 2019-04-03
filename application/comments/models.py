@@ -15,13 +15,13 @@ class Comment(Base):
 
     @staticmethod
     def find_comments_in_product(product_id):
-        stmt = text("SELECT account.username, comment.content FROM"
+        stmt = text("SELECT account.id, account.username, comment.content, comment.id FROM"
         " Account, Comment WHERE product_id = :product_id"
         " AND account_id=account.id").params(product_id=product_id)
         res = db.engine.execute(stmt)
 
         response = []
         for row in res:
-            response.append({"username": row[0], "content": row[1]})
+            response.append({"user_id": row[0], "username": row[1], "content": row[2], "comment_id": row[3]})
 
         return response

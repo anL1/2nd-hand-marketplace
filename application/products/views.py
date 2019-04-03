@@ -36,7 +36,7 @@ def single_product_page(product_id):
     p = Product.query.get(product_id)
     user = User.query.get(p.account_id)
     comments = Comment.find_comments_in_product(product_id)
-    return render_template("products/product_page.html", product = p, user = user, comments = comments, form = CommentForm())
+    return render_template("products/product_page.html", product = p, user = user, comments = comments, form = CommentForm(), current_user = current_user)
 
 @app.route("/products/<product_id>/edit/", methods=["GET"])
 def product_ad_page(product_id):
