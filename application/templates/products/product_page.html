@@ -12,8 +12,8 @@
   </tr>
 {% for c in comments %}
     <tr>
+      <td>{{c.username}}</td>
       <td>{{c.content}}</td>
-      <td>{{c.account_id}}</td>
     </tr>
 {% endfor %}
 </table>

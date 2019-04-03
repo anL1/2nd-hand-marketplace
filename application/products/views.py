@@ -35,7 +35,7 @@ def product_ad_create():
 def single_product_page(product_id):
     p = Product.query.get(product_id)
     user = User.query.get(p.account_id)
-    comments = Comment.query.filter_by(product_id = product_id).all()
+    comments = Comment.find_comments_in_product(product_id)
     return render_template("products/product_page.html", product = p, user = user, comments = comments, form = CommentForm())
 
 @app.route("/products/<product_id>/edit/", methods=["GET"])

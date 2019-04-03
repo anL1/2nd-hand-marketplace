@@ -10,8 +10,8 @@ from application.comments.forms import CommentForm
 def add_comment(product_id):
     form = CommentForm(request.form)
 
-#    if not form.validate()
-#        return render_template("/products/product_page.html")
+    if not form.validate():
+        return redirect(url_for("single_product_page", product_id = product_id))
 
     c = Comment(form.content.data)
     c.account_id = current_user.id
