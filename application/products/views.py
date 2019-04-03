@@ -15,7 +15,7 @@ def new_ad_form():
 
 @app.route("/products/", methods=["GET"])
 def products_index():
-    return render_template("products/products_index.html", productList = Product.query.all())
+    return render_template("products/products_index.html", productList = Product.query.all(), user = current_user)
 
 @app.route("/products/", methods=["POST"])
 @login_required
@@ -43,6 +43,7 @@ def product_ad_page(product_id):
     return render_template("products/edit_ad.html", product = Product.query.get(product_id), form = ProductForm())
 
 @app.route("/products/<product_id>/edit/", methods=["POST"])
+@login_required
 def product_ad_modify(product_id):
     product = Product.query.get(product_id)
     form = ProductForm(request.form)

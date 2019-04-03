@@ -13,7 +13,9 @@
   <tr>
     <td><a href="{{url_for('single_product_page', product_id=item.id) }}">{{item.name}}</a></td>
     <td>{{item.price}} €</td>
+    {% if item.account_id == user.id %}
     <td><a href="{{url_for('product_ad_page', product_id=item.id) }}">Muokkaa ilmoitusta</a></td>
+    {% endif %}
   </tr>
 {% endfor %}
 </table>
