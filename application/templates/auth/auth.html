@@ -3,7 +3,9 @@
 {% block body %}
 <h1>Kirjaudu sisään</h1>
 {{ error }}
-<form method="POST" action="{{ url_for('auth_login') }}">
+<form method="POST" action="{{ url_for('auth_login') }}" class="form-signin">
+
+<div class="form-group">
   <table>
     <tr>
       <td>
@@ -37,8 +39,10 @@
     </tr>
     <tr>
       <td colspan="2">
-	<input type="submit" value="Kirjaudu sisään"/>
+	<button type="submit" class="btn btn-primary" >Kirjaudu sisään</button>
       </td>
     </tr>
+  </div>
+  
 </form>
 {% endblock %}

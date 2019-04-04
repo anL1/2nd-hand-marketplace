@@ -2,24 +2,22 @@
 
 {% block body %}
 <div>
-<h1>Tervetuloa nettikirpputorille!</h1>
+<h1>Tervetuloa</h1>
 
-<table>
-  <tr>
-    <th>Tuote</th>
-    <th>Hinta</th>
-  </tr>
-{% for item in productList %}
-  <tr>
-    <td><a href="{{url_for('single_product_page', product_id=item.id) }}">{{item.name}}</a></td>
-    <td>{{item.price}} €</td>
+<h2>Myynti-ilmoitukset</h2>
+
+<div class="container">
+  {% for item in productList %}
+  <div class="row">
+    <div class="col"><a href="{{url_for('single_product_page', product_id=item.id) }}">{{item.name}}</a></div>
+    <div class="col">{{item.price}} €</div>
     {% if item.account_id == user.id %}
-    <td><a href="{{url_for('product_ad_page', product_id=item.id) }}">Muokkaa ilmoitusta</a></td>
+    <div class="col"><a href="{{url_for('product_ad_page', product_id=item.id) }}">Muokkaa ilmoitusta</a></div>
+    {% else %}
+    <div class="col"></div>
     {% endif %}
-  </tr>
-{% endfor %}
-</table>
-
-<p>More features coming soon</p>
+  </div>
+  {% endfor %}
+</div>
 </div>
 {% endblock %}
