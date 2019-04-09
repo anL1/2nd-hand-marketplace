@@ -14,7 +14,7 @@ def auth_create_new():
 
     form = SignUpForm(request.form)
     if not form.validate():
-        return render_template("auth/new.html", form = form)
+        return render_template("auth/new.html", form = form, error = "Salasanan täytyy sisältää väh. 5 merkkiä ja yksi numero")
 
     u = User(form.name.data, form.username.data, form.password.data)
     db.session().add(u)

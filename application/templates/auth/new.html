@@ -2,6 +2,7 @@
 
 {% block body %}
 <h1>Rekisteröidy</h1>
+{{ error }}
 <form method="POST" action="{{ url_for('auth_create_new') }}">
   <table>
     <tr>
