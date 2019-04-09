@@ -7,6 +7,7 @@ class Product(Base):
     price = db.Column(db.Integer, nullable=False)
 
     account_id = db.Column(db.Integer, db.ForeignKey('account.id'), nullable=False)
+    productCategories = db.relationship("ProductCategory", backref='product', lazy=True)
 
     def __init__(self, name, price):
         self.name = name
