@@ -61,6 +61,12 @@ def product_ad_modify(product_id):
 @login_required
 def delete_product_ad(product_id):
     p = Product.query.get(product_id)
+    comments = Comment.query.filter_by(product_id = product_id).all()
+
+    for c in comments:
+        db.session().delete(c)
+        db.session().commit()
+
     db.session().delete(p)
     db.session().commit()
 
