@@ -24,7 +24,7 @@ def products_index():
 def product_ad_create():
     form = ProductForm(request.form)
     if not form.validate():
-        return render_template("products/new_ad.html", form = form)
+        return render_template("products/new_ad.html", form = form, categories = Category.query.all())
 
     p = Product(form.name.data, form.price.data)
     p.account_id = current_user.id
