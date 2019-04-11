@@ -5,10 +5,9 @@ from application.categories.forms import CategoryForm
 from application.categories.models import Category
 
 @app.route("/categories/new/", methods=["GET", "POST"])
-@login_required
 def category_form():
     if request.method == "GET":
-        return render_template("category/new.html", form = CategoryForm(), categories = Category.query.all())
+        return render_template("category/new.html", form = CategoryForm(), categories = Category.query.all(), current_user = current_user)
 
     form = CategoryForm(request.form)
     if not form.validate():
@@ -19,3 +18,10 @@ def category_form():
     db.session().commit()
 
     return redirect(url_for('category_form'))
+
+@app.route("/categories/<category_id>/")
+def category_page(category_id):
+    category = Category.query.get(category_id)
+    products = Category.find_products_in_category(category_id)
+
+    return render_template("category/category_page.html", category=category, products = products)

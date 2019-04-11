@@ -1,11 +1,15 @@
 {% extends "layout.html" %}
 {% block body %}
-<ul>
+<div>
+<h1>Selaa myynti-ilmoitusten kategorioita</h1>
+<p>Tällä hetkellä palvelussa on seuraavat kategoriat tuotteille:</p>
 {% for c in categories %}
-  <li>{{c.name}}</li>
+<div>
+  <a href="{{url_for('category_page', category_id = c.id)}}">{{c.name}}</a>
+</div>
 {% endfor %}
-</ul>
 
+{% if current_user.is_authenticated %}
 <form method="POST" action="{{url_for('category_form')}}"
 <table>
   <tr>
@@ -19,4 +23,6 @@
   </tr>
 </table>
 </form>
+{% endif %}
+</div>
 {% endblock %}
