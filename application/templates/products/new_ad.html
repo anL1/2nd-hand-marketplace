@@ -34,6 +34,12 @@
 	     </td>
     </tr>
     <tr>
+      {% for c in categories %}
+      <td>
+        <input type="checkbox" value={{c.id}} name="category_check">{{c.name}}</input>
+      </td>
+      {% endfor %}
+    <tr>
       <td colspan="2">
         <input type="submit" value="Luo ilmoitus" />
       </td>

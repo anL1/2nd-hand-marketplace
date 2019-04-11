@@ -7,11 +7,13 @@ from application.products.forms import ProductForm
 from application.auth.models import User
 from application.comments.models import Comment
 from application.comments.forms import CommentForm
+from application.categories.models import Category
+from application.productCategory.models import ProductCategory
 
 @app.route("/products/new/")
 @login_required
 def new_ad_form():
-    return render_template("products/new_ad.html", form = ProductForm())
+    return render_template("products/new_ad.html", form = ProductForm(), categories = Category.query.all())
 
 @app.route("/products/", methods=["GET"])
 def products_index():
@@ -28,6 +30,12 @@ def product_ad_create():
     p.account_id = current_user.id
     db.session().add(p)
     db.session().commit()
+
+    categories = request.form.getlist('category_check')
+    for c in categories:
+        categoryRelation = ProductCategory(p.id, c)
+        db.session().add(categoryRelation)
+        db.session().commit()
 
     return redirect(url_for("products_index"))
 
