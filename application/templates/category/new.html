@@ -1,5 +1,22 @@
 {% extends "layout.html" %}
 {% block body %}
-<p>Hello from category</p>
+<ul>
+{% for c in categories %}
+  <li>{{c.name}}</li>
+{% endfor %}
+</ul>
 
+<form method="POST" action="{{url_for('category_form')}}"
+<table>
+  <tr>
+    <td>{{form.name.label}}</td>
+    <td>{{form.name}}</td>
+  </tr>
+  <tr>
+    <td>
+      <button type="submit" class="btn btn-primary" >Lisää kategoria</button>
+    </td>
+  </tr>
+</table>
+</form>
 {% endblock %}

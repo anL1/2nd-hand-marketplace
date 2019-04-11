@@ -28,6 +28,8 @@ from application.comments import views
 from application.categories import models
 from application.categories import views
 
+from application.productCategory import models
+
 from application.auth.models import User
 from os import urandom
 app.config["SECRET_KEY"] = urandom(32)
