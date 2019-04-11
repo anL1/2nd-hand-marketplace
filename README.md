@@ -12,6 +12,8 @@ kommentteja / kysymyksiä tuotteesta. Käyttäjän täytyy rekisteröityä järj
 
 [Asennusohje](https://github.com/anL1/2nd-hand-marketplace/blob/master/documentation/asennusohje.md)
 
+[Alustava käyttöohje](https://github.com/anL1/2nd-hand-marketplace/blob/master/documentation/manual.md)
+
 ### Heroku
 https://web-market.herokuapp.com/
 
