@@ -3,6 +3,7 @@
 {% block body %}
 <h1>Muokkaa ilmoitustasi</h1>
 <h2>{{ product.name }}</h2>
+<p>{{product.content}}</p>
 <p>Hinta: {{product.price}}</p>
 
 <form method="post" action="{{url_for('delete_product_ad', product_id=product.id)}}">
@@ -20,6 +21,17 @@
       <td>
 	       <ul>
 	         {% for error in form.name.errors %}
+	         <li>{{ error }}</li>
+	         {% endfor %}
+	        </ul>
+	     </td>
+    </tr>
+    <tr>
+      <td>{{form.content.label}}</td>
+      <td>{{form.content}}</td>
+      <td>
+	       <ul>
+	         {% for error in form.content.errors %}
 	         <li>{{ error }}</li>
 	         {% endfor %}
 	        </ul>

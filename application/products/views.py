@@ -26,7 +26,7 @@ def product_ad_create():
     if not form.validate():
         return render_template("products/new_ad.html", form = form, categories = Category.query.all())
 
-    p = Product(form.name.data, form.price.data)
+    p = Product(form.name.data, form.content.data, form.price.data)
     p.account_id = current_user.id
     db.session().add(p)
     db.session().commit()
@@ -59,11 +59,12 @@ def product_ad_modify(product_id):
         return render_template("products/edit_ad.html", product = Product.query.get(product_id), form = form)
 
     product.name = form.name.data
+    product.content = form.content.data
     product.price = form.price.data
 
     db.session().commit()
 
-    return redirect(url_for("products_index"))
+    return redirect(url_for("single_product_page", product_id=product_id))
 
 @app.route("/products/<product_id>/edit/delete/", methods=["POST"])
 @login_required
