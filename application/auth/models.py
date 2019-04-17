@@ -1,5 +1,6 @@
 from application import db
 from application.models import Base
+from sqlalchemy.sql import text
 
 class User(Base):
 
@@ -27,3 +28,12 @@ class User(Base):
 
     def is_authenticated(self):
         return True
+
+    @staticmethod
+    def count_users_comments(account_id):
+        stmt = text("select count(comment.id) from comment where account_id = :account_id").params(account_id=account_id)
+        res = db.engine.execute(stmt)
+        response = []
+        for row in res:
+            response.append(row[0])
+        return response

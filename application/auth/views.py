@@ -48,4 +48,5 @@ def auth_logout():
 @app.route("/auth/<user_id>/")
 def auth_user_page(user_id):
     productList = Product.query.filter_by(account_id = user_id)
-    return render_template("auth/user_page.html", user = User.query.get(user_id), list = productList)
+    comment_count = User.count_users_comments(user_id)
+    return render_template("auth/user_page.html", user = User.query.get(user_id), list = productList, comment_count = comment_count)
