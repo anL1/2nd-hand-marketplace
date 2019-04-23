@@ -1,7 +1,7 @@
 from flask import render_template, request, redirect, url_for
 from flask_login import login_user, logout_user
 
-from application import app, db
+from application import app, db, bcrypt
 from application.auth.models import User
 from application.auth.forms import LoginForm, SignUpForm
 
@@ -16,7 +16,8 @@ def auth_create_new():
     if not form.validate():
         return render_template("auth/new.html", form = form, error = "Salasanan täytyy sisältää väh. 5 merkkiä ja yksi numero")
 
-    u = User(form.name.data, form.username.data, form.password.data)
+    passwordHash = bcrypt.generate_password_hash(form.password.data)
+    u = User(form.name.data, form.username.data, passwordHash)
     db.session().add(u)
     db.session().commit()
 
@@ -31,14 +32,15 @@ def auth_login():
     if not form.validate():
         return render_template("auth/auth.html", form = form)
 
-    user = User.query.filter_by(username=form.username.data, password=form.password.data).first()
+    user = User.query.filter_by(username=form.username.data).first()
+    pwCheck = bcrypt.check_password_hash(user.password, form.password.data)
 
-    if not user:
+    if user and pwCheck:
+        login_user(user)
+        return redirect(url_for("products_index"))
+    else:
         return render_template("auth/auth.html", form = form,
                                error = "No such username or password")
-
-    login_user(user)
-    return redirect(url_for("products_index"))
 
 @app.route("/auth/logout/")
 def auth_logout():
