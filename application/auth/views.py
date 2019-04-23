@@ -33,14 +33,18 @@ def auth_login():
         return render_template("auth/auth.html", form = form)
 
     user = User.query.filter_by(username=form.username.data).first()
+    if not user:
+        return render_template("auth/auth.html", form = form,
+                               error = "Käyttäjää ei olemassa")
+
     pwCheck = bcrypt.check_password_hash(user.password, form.password.data)
 
-    if user and pwCheck:
+    if pwCheck:
         login_user(user)
         return redirect(url_for("products_index"))
     else:
         return render_template("auth/auth.html", form = form,
-                               error = "No such username or password")
+                               error = "Virheellinen salasana")
 
 @app.route("/auth/logout/")
 def auth_logout():
