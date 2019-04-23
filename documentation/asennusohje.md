@@ -1,6 +1,6 @@
 # Asennusohje
 
-Tämä ohje on tarkoitettu projektin asentamiseen lokaalisti koneellesi.
+Tämä ohje on tarkoitettu projektin asentamiseen lokaalisti koneellesi. Verkossa toimivan sovelluksen löydät [herokusta](https://web-market.herokuapp.com/).
 1. Kloonaa repositorio haluamaasi hakemistoon
 2. Luo uusi Python-virtuaaliympäristö riippuvuuksien ym. asentamista varten (suositeltavaa). 
 ```
