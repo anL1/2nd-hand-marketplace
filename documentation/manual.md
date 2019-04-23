@@ -1,5 +1,7 @@
 # Alustava käyttöohje
 
+Sovellus on tuotannossa herokussa ja löytyy [täältä](https://web-market.herokuapp.com/)
+
 * Navigointi sovelluksessa tapahtuu yläreunan navigaatiopalkista. Navigaatiopalkin napit ovat melko itsestäänselvät.
 * Rekisteröitynyt käyttäjä voi lisätä palveluun uusia ilmoituksia lomakkeella joka aukeaa linkistä 'Lisää uusi ilmoitus'.
 * Rekisteröitynyt käyttäjä voi lisätä palveluun myös uusia kategorioita tuotteiden jaottelua varten. Lomake kategorioiden
