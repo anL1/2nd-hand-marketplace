@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="jumbotron">
+  <h1 class="display-4">Tervetuloa!</h1>
+  <p class="lead">Tervetuloa 2nd-hand-foorumille, netin vilkkaimpaan kauppapaikkaan.</p>
+  <hr class="my-4">
+  <p>Alkuun pääset helpoiten rekisteröitymällä. Voit selata ilmoituksia myös kirjautumatta.</p>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="{{url_for('auth_create_new')}}" role="button">Rekisteröidy</a>
+  </p>
+</div>
+
+{% endblock %}

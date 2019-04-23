@@ -2,25 +2,22 @@
 
 {% block body %}
 <h1>Kirjaudu sisään</h1>
-{{ error }}
+{% if error %}
+<div class="alert alert-danger" role="alert">{{ error }}</div>
+{% endif %}
 <form method="POST" action="{{ url_for('auth_login') }}" class="form-signin">
-
   <div class="form-group">
     {{ form.username(class="form-control", placeholder="Käyttäjänimi") }}
   </div>
-  <ul>
     {% for error in form.username.errors %}
-    <li>{{ error }}</li>
+    <div class="alert alert-warning" role="alert">{{ error }}</div>
     {% endfor %}
-  </ul>
   <div class="form-group">
     {{ form.password(class="form-control", placeholder="Salasana") }}
   </div>
-  <ul>
     {% for error in form.password.errors %}
-    <li>{{ error }}</li>
+    <div class="alert alert-warning" role="alert">{{ error }}</div>
     {% endfor %}
-  </ul>
   <button type="submit" class="btn btn-primary" >Kirjaudu sisään</button>
 </form>
 {% endblock %}

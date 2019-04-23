@@ -7,56 +7,29 @@
 <p>Hinta: {{product.price}}</p>
 
 <form method="post" action="{{url_for('delete_product_ad', product_id=product.id)}}">
-  <input type="submit" value="Poista ilmoitus"/>
+  <button type="submit" class="btn btn-danger" >Poista ilmoitus</button>
 </form>
+<div class="container">
 <form method="post" action="{{url_for('product_ad_modify', product_id=product.id)}}" >
-  <table>
-    <tr>
-      <td>
-        {{form.name.label}}
-      </td>
-      <td>
-        {{form.name}}
-      </td>
-      <td>
-	       <ul>
-	         {% for error in form.name.errors %}
-	         <li>{{ error }}</li>
-	         {% endfor %}
-	        </ul>
-	     </td>
-    </tr>
-    <tr>
-      <td>{{form.content.label}}</td>
-      <td>{{form.content}}</td>
-      <td>
-	       <ul>
-	         {% for error in form.content.errors %}
-	         <li>{{ error }}</li>
-	         {% endfor %}
-	        </ul>
-	     </td>
-    </tr>
-    <tr>
-      <td>
-        {{form.price.label}}
-      </td>
-      <td>
-        {{form.price}}
-      </td>
-      <td>
-	       <ul>
-	         {% for error in form.price.errors %}
-	         <li>{{ error }}</li>
-	         {% endfor %}
-	        </ul>
-	     </td>
-    </tr>
-    <tr>
-      <td colspan="2">
-        <input type="submit" value="Tallenna muokkaukset" />
-      </td>
-    </tr>
-  </table>
+  <div class="form-group">
+    {{form.name(class="form-control", placeholder="Nimi")}}
+  </div>
+    {% for error in form.name.errors %}
+    <div class="alert alert-warning" role="alert">{{ error }}</div>
+    {% endfor %}
+  <div class="form-group">
+    {{form.content(class="form-control", placeholder="Sisältö")}}
+  </div>
+    {% for error in form.content.errors %}
+    <div class="alert alert-warning" role="alert">{{ error }}</div>
+    {% endfor %}
+  <div class="form-group">
+    {{form.price(class="form-control", placeholder="Hinta")}}
+  </div>
+    {% for error in form.price.errors %}
+    <div class="alert alert-warning" role="alert">{{ error }}</div>
+    {% endfor %}
+  <button type="submit" class="btn btn-primary">Tallenna</button>
 </form>
+</div>
 {% endblock %}

@@ -2,32 +2,28 @@
 
 {% block body %}
 <h1>Rekisteröidy</h1>
-{{ error }}
 <form method="POST" action="{{ url_for('auth_create_new') }}">
   <div class="form-group">
     {{ form.name(class="form-control", placeholder="Nimi") }}
   </div>
-  <ul>
-    {% for error in form.name.errors %}
-    <li>{{ error }}</li>
-    {% endfor %}
-  </ul>
+  {% for error in form.name.errors %}
+  <div class="alert alert-warning" role="alert">{{ error }}</div>
+  {% endfor %}
   <div class="form-group">
     {{ form.username(class="form-control", placeholder="Käyttäjänimi") }}
   </div>
-  <ul>
-    {% for error in form.username.errors %}
-    <li>{{ error }}</li>
-    {% endfor %}
-  </ul>
+  {% for error in form.username.errors %}
+  <div class="alert alert-warning" role="alert">{{ error }}</div>
+  {% endfor %}
   <div class="form-group">
     {{ form.password(class="form-control", placeholder="Salasana") }}
   </div>
-  <ul>
-    {% for error in form.password.errors %}
-    <li>{{ error }}</li>
-    {% endfor %}
-  </ul>
+  {% for error in form.password.errors %}
+  <div class="alert alert-warning" role="alert">{{ error }}</div>
+  {% endfor %}
+  {% if error %}
+  <div class="alert alert-info" role="alert">{{ error }}</div>
+  {% endif %}
   <button type="submit" class="btn btn-primary" >Luo käyttäjä</button>
 </form>
 {% endblock %}

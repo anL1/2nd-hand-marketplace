@@ -6,29 +6,23 @@
   <div class="form-group">
     {{form.name(class="form-control", placeholder="Nimi")}}
   </div>
-  <ul>
     {% for error in form.name.errors %}
-    <li>{{ error }}</li>
+    <div class="alert alert-warning" role="alert">{{ error }}</div>
     {% endfor %}
-  </ul>
 
   <div class="form-group">
     {{form.content(class="form-control", placeholder="Sisältö")}}
   </div>
-  <ul>
     {% for error in form.content.errors %}
-    <li>{{ error }}</li>
+    <div class="alert alert-warning" role="alert">{{ error }}</div>
     {% endfor %}
-  </ul>
 
   <div class="form-group">
     {{form.price(class="form-control", placeholder="Hinta")}}
   </div>
-  <ul>
     {% for error in form.price.errors %}
-    <li>{{ error }}</li>
+    <div class="alert alert-warning" role="alert">{{ error }}</div>
     {% endfor %}
-  </ul>
 
     <label>Kategoriat</label>
     {% for c in categories %}

@@ -1,28 +1,21 @@
 {% extends "layout.html" %}
 {% block body %}
 <div>
-<h1>Selaa myynti-ilmoitusten kategorioita</h1>
-<p>Tällä hetkellä palvelussa on seuraavat kategoriat tuotteille:</p>
-{% for c in categories %}
-<div>
-  <a href="{{url_for('category_page', category_id = c.id)}}">{{c.name}}</a>
-</div>
-{% endfor %}
+  <h1>Selaa myynti-ilmoitusten kategorioita</h1>
+  <p>Tällä hetkellä palvelussa on seuraavat kategoriat tuotteille:</p>
+  {% for c in categories %}
+  <div>
+    <a href="{{url_for('category_page', category_id = c.id)}}">{{c.name}}</a>
+  </div>
+  {% endfor %}
 
-{% if current_user.is_authenticated %}
-<form method="POST" action="{{url_for('category_form')}}"
-<table>
-  <tr>
-    <td>{{form.name.label}}</td>
-    <td>{{form.name}}</td>
-  </tr>
-  <tr>
-    <td>
-      <button type="submit" class="btn btn-primary" >Lisää kategoria</button>
-    </td>
-  </tr>
-</table>
-</form>
-{% endif %}
+  {% if current_user.is_authenticated %}
+  <form method="POST" action="{{url_for('category_form')}}">
+    <div class="form-group" >
+      {{form.name(class="form-control", placeholder="Nimi")}}
+    </div>
+    <button type="submit" class="btn btn-primary" >Lisää kategoria</button>
+  </form>
+  {% endif %}
 </div>
 {% endblock %}
