@@ -16,7 +16,7 @@ def auth_create_new():
     if not form.validate():
         return render_template("auth/new.html", form = form, error = "Salasanan täytyy sisältää väh. 5 merkkiä ja yksi numero")
 
-    passwordHash = bcrypt.generate_password_hash(form.password.data)
+    passwordHash = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
     u = User(form.name.data, form.username.data, passwordHash)
     db.session().add(u)
     db.session().commit()
