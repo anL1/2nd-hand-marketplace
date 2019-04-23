@@ -16,6 +16,11 @@ def auth_create_new():
     if not form.validate():
         return render_template("auth/new.html", form = form, error = "Salasanan täytyy sisältää väh. 5 merkkiä ja yksi numero")
 
+    users = User.query.all()
+    for u in users:
+        if u.username == form.username.data:
+            return render_template("auth/new.html", form = form, error = "Käyttäjänimi varattu")
+
     passwordHash = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
     u = User(form.name.data, form.username.data, passwordHash)
     db.session().add(u)
