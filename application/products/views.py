@@ -71,6 +71,11 @@ def product_ad_modify(product_id):
 def delete_product_ad(product_id):
     p = Product.query.get(product_id)
     comments = Comment.query.filter_by(product_id = product_id).all()
+    categoryRelation = ProductCategory.query.filter_by(product_id = product_id).all()
+
+    for relation in categoryRelation:
+        db.session().delete(relation)
+        db.session().commit()
 
     for c in comments:
         db.session().delete(c)
