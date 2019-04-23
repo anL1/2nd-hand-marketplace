@@ -1,60 +1,42 @@
 {% extends "layout.html" %}
 
 {% block body %}
+<h1>Lisää uusi ilmoitus</h1>
 <form method="post" action="{{url_for('product_ad_create')}}" >
-  <table>
-    <tr>
-      <td>
-        {{form.name.label}}
-      </td>
-      <td>
-        {{form.name}}
-      </td>
-      <td>
-	       <ul>
-	         {% for error in form.name.errors %}
-	         <li>{{ error }}</li>
-	         {% endfor %}
-	        </ul>
-	     </td>
-    </tr>
-    <tr>
-      <td>{{form.content.label}}</td>
-      <td>{{form.content}}</td>
-      <td>
-	       <ul>
-	         {% for error in form.content.errors %}
-	         <li>{{ error }}</li>
-	         {% endfor %}
-	        </ul>
-	     </td>
-    </tr>
-    <tr>
-      <td>
-        {{form.price.label}}
-      </td>
-      <td>
-        {{form.price}}
-      </td>
-      <td>
-	       <ul>
-	         {% for error in form.price.errors %}
-	         <li>{{ error }}</li>
-	         {% endfor %}
-	        </ul>
-	     </td>
-    </tr>
-    <tr>
-      {% for c in categories %}
-      <td>
-        <input type="checkbox" value={{c.id}} name="category_check">{{c.name}}</input>
-      </td>
-      {% endfor %}
-    <tr>
-      <td colspan="2">
-        <input type="submit" value="Luo ilmoitus" />
-      </td>
-    </tr>
-  </table>
+  <div class="form-group">
+    {{form.name(class="form-control", placeholder="Nimi")}}
+  </div>
+  <ul>
+    {% for error in form.name.errors %}
+    <li>{{ error }}</li>
+    {% endfor %}
+  </ul>
+
+  <div class="form-group">
+    {{form.content(class="form-control", placeholder="Sisältö")}}
+  </div>
+  <ul>
+    {% for error in form.content.errors %}
+    <li>{{ error }}</li>
+    {% endfor %}
+  </ul>
+
+  <div class="form-group">
+    {{form.price(class="form-control", placeholder="Hinta")}}
+  </div>
+  <ul>
+    {% for error in form.price.errors %}
+    <li>{{ error }}</li>
+    {% endfor %}
+  </ul>
+
+    <label>Kategoriat</label>
+    {% for c in categories %}
+    <div class="form-check">
+    <input type="checkbox" value={{c.id}} name="category_check" class="form-check-input"/>
+    <label class="form-check-label">{{c.name}}</label>
+    </div>
+    {% endfor %}
+  <button type="submit" class="btn btn-primary">Luo ilmoitus</button>
 </form>
 {% endblock %}
