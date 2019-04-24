@@ -17,28 +17,27 @@
   </p>
 </div>
 
-<table>
-  <tr>
-    <th>Kommentit</th>
-  </tr>
-{% for c in comments %}
-    <tr>
-      <td>{{c.username}}</td>
-      <td>{{c.content}}</td>
-      {% if current_user.id == c.user_id %}
-      <td>
-        <form method="post" action="{{url_for('delete_comment', comment_id = c.comment_id, product_id = product.id)}}">
-          <button type="submit" class="btn btn-danger" >Poista kommentti</button>
-        </form>
-      </td>
-      {% endif %}
-    </tr>
-{% endfor %}
-</table>
+<ul class="list-group">
+
+  <li class="list-group-item">Kommentit</li>
+
+  {% for c in comments %}
+  <li class="list-group-item">
+    <a href="{{url_for('auth_user_page', user_id=c.user_id)}}" class="list-group-item list-group-item-action">{{c.username}} : {{c.content}}</a>
+  </li>
+
+  {% if current_user.id == c.user_id %}
+  <form method="post" action="{{url_for('delete_comment', comment_id = c.comment_id, product_id = product.id)}}">
+    <li class="list-group-item"><button type="submit" class="btn btn-danger" >Poista kommentti</button></li>
+  </form>
+  {% endif %}
+
+  {% endfor %}
+</ul>
 <form method="post" action="{{url_for('add_comment', product_id = product.id)}}">
-<div class="form-group">
-{{form.content(class="form-control", placeholder="Kommentti...")}}
-</div>
-      <button type="submit" class="btn btn-primary" >Lisää kommentti</button>
+  <div class="form-group">
+    {{form.content(class="form-control", placeholder="Kommentti...")}}
+  </div>
+  <button type="submit" class="btn btn-primary" >Lisää kommentti</button>
 </form>
 {% endblock %}
