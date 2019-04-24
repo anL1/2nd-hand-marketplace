@@ -28,7 +28,7 @@
       {% if current_user.id == c.user_id %}
       <td>
         <form method="post" action="{{url_for('delete_comment', comment_id = c.comment_id, product_id = product.id)}}">
-          <input type="submit" value="Poista kommentti" />
+          <button type="submit" class="btn btn-danger" >Poista kommentti</button>
         </form>
       </td>
       {% endif %}
@@ -36,14 +36,9 @@
 {% endfor %}
 </table>
 <form method="post" action="{{url_for('add_comment', product_id = product.id)}}">
-<table>
-  <tr>
-    <td>{{form.content.label}}</td>
-    <td>{{form.content}}</td>
-    <td colspan="2">
-      <input type="submit" value="Lisää kommentti" />
-    </td>
-  </tr>
-</table>
+<div class="form-group">
+{{form.content(class="form-control", placeholder="Kommentti...")}}
+</div>
+      <button type="submit" class="btn btn-primary" >Lisää kommentti</button>
 </form>
 {% endblock %}

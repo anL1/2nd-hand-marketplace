@@ -6,6 +6,7 @@
   {% for c in categories %}
   <div>
     <a href="{{url_for('category_page', category_id = c.id)}}">{{c.name}}</a>
+    <p>Ilmoituksia kategoriassa {{c.size}} kpl</p>
   </div>
   {% endfor %}
 

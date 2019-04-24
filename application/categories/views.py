@@ -7,7 +7,13 @@ from application.categories.models import Category
 @app.route("/categories/new/", methods=["GET", "POST"])
 def category_form():
     if request.method == "GET":
-        return render_template("category/new.html", form = CategoryForm(), categories = Category.query.all(), current_user = current_user)
+        categories = Category.query.all()
+        response = []
+        for c in categories:
+            productsAmount = len(Category.find_products_in_category(c.id))
+            response.append({"name": c.name, "size": productsAmount, "id": c.id})
+
+        return render_template("category/new.html", form = CategoryForm(), categories = response, current_user = current_user)
 
     form = CategoryForm(request.form)
     if not form.validate():
