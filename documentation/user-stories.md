@@ -2,6 +2,7 @@
 
 ## Toteutetut
 * Käyttäjä voi rekisteröityä järjestelmään. Jokaisella käyttäjällä tulee olla uniikki käyttäjänimi.
+* Käyttäjä voi muokata tietojaan (nimi, salasana) käyttäjäsivun kautta. Käyttäjänimi on pysyvä.
 * Käyttäjä voi luoda uuden ilmoituksen myynnissä olevasta tuotteestaan
    * Ilmoitukselle voi asettaa otsikon, kuvauksen ja hinnan
    * Ilmoituksen voi asettaa yhteen tai useampaan kategoriaan
@@ -13,9 +14,11 @@
 * Käyttäjät näkevät ilmoitukseen jätetyt kommentit ilmoituksen sivulla
 * Käyttäjä voi poistaa omia kommenttejaan
 
-## Tulevia ominaisuuksia
+## Jatkokehitysideoita / ominaisuudet joita ei ehtinyt toteuttamaan
 * Ilmoituksia voi tarkastella luomispäivämäärän mukaan
 * Käyttäjä voi muokata kommenttiaan
+* Käyttäjän voi poistaa
+* Kategorian voi poistaa (esim. Admin-rooli voisi olla hyvä tähän). 
 
 ## Käyttötapauksiin liittyvät tietokantakyselyt
 * Käyttäjä voi rekisteröityä järjestelmään. Jokaisella käyttäjällä tulee olla uniikki käyttäjänimi.
