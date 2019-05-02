@@ -15,3 +15,11 @@ class SignUpForm(FlaskForm):
 
     class Meta:
         csrf = False
+
+class EditForm(FlaskForm):
+    name = StringField("Nimi", [validators.InputRequired(), validators.DataRequired(), validators.Length(min=3)])
+    password = PasswordField("Salasana", [validators.InputRequired(), validators.DataRequired(), validators.Length(min=5, max=20), validators.Regexp('.+\d+'), validators.EqualTo('confirm', message='Salasanat eivät vastaa')])
+    confirm = PasswordField("Salasana uudelleen")
+
+    class Meta:
+        csrf = False

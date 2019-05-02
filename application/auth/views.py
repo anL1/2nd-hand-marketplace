@@ -1,9 +1,9 @@
 from flask import render_template, request, redirect, url_for
-from flask_login import login_user, logout_user
+from flask_login import login_user, logout_user, login_required, current_user
 
 from application import app, db, bcrypt
 from application.auth.models import User
-from application.auth.forms import LoginForm, SignUpForm
+from application.auth.forms import LoginForm, SignUpForm, EditForm
 
 from application.products.models import Product
 
@@ -61,3 +61,20 @@ def auth_user_page(user_id):
     productList = Product.query.filter_by(account_id = user_id)
     comment_count = User.count_users_comments(user_id)
     return render_template("auth/user_page.html", user = User.query.get(user_id), list = productList, comment_count = comment_count)
+
+@app.route("/auth/<user_id>/edit/", methods=["GET", "POST"])
+@login_required
+def edit_user(user_id):
+    if request.method == "GET":
+        return render_template("auth/edit_user_information.html", user = User.query.get(current_user.id), form = EditForm())
+
+    form = EditForm(request.form)
+    user = User.query.get(user_id)
+    if not form.validate():
+        return render_template("auth/edit_user_information.html", user = user, form = form)
+
+    user.name = form.name.data
+    user.password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+    db.session().commit()
+
+    return redirect(url_for("auth_user_page", user_id=user_id))

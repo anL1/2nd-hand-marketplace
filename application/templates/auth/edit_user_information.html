@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<h1>Muokkaa käyttäjän {{user.username}} käyttäjätietoja</h1>
+<form method="POST" action="{{ url_for('edit_user', user_id=user.id) }}">
+  <div class="form-group">
+    {{ form.name(class="form-control", placeholder="Nimi") }}
+  </div>
+  {% for error in form.name.errors %}
+  <div class="alert alert-warning" role="alert">{{ error }}</div>
+  {% endfor %}
+  <div class="form-group">
+    {{ form.password(class="form-control", placeholder="Salasana") }}
+  </div>
+  {% for error in form.password.errors %}
+  <div class="alert alert-warning" role="alert">{{ error }}</div>
+  {% endfor %}
+  {% if error %}
+  <div class="alert alert-info" role="alert">{{ error }}</div>
+  {% endif %}
+  <div class="form-group">
+    {{ form.confirm(class="form-control", placeholder="Salasana uudelleen") }}
+  </div>
+  {% if form.confirm.message %}
+    <div class="alert alert-warning" role="alert">{{ form.confirm.message }}</div>
+  {% endif %}
+  <button type="submit" class="btn btn-primary" >Tallenna</button>
+</form>
+{% endblock %}
