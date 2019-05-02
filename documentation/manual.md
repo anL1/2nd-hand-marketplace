@@ -1,4 +1,4 @@
-# Alustava käyttöohje
+# Käyttöohje
 
 Sovellus on tuotannossa herokussa ja löytyy [täältä](https://web-market.herokuapp.com/)
 
@@ -11,3 +11,4 @@ lisäämiseen aukeaa linkistä 'Kategoriat' mikäli käyttäjä on kirjautunut s
 kategorian nimeä näet sinne listatut tuotteet
 * Tuotteiden sivuja pääsee tarkastelemaan etusivun näkymästä klikkaamalla tuotteen nimeä. Etusivulla käyttäjä näkee myös
 itse lisäämissään tuotteissa linkit joiden kautta ilmoitusta pääsee muokkaamaan / poistamaan.
+* Käyttäjä voi muokata tietojaan käyttäjäsivulta löytyvän linkin kautta. Käyttäjäsivulle pääsee klikkaamalla yläpalkissa näkyvää käyttäjänimeä. Lomakkeella voi vaihtaa mm. salasanaa.
